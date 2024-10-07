@@ -11,8 +11,8 @@ import java.util.Date;
  * @author A16
  */
 public class ASIGNA {
-    public int IdAsigna,IdAula,DNIALUMNO;
-    public Date Año;
+    private int IdAsigna,IdAula,DNIALUMNO;
+    private Date Año;
 
     public ASIGNA() {
     }

@@ -10,8 +10,8 @@ package Modelo;
  */
 public class CURSO {
     
-    int IdCurso;
-    String NCurso;
+    private int IdCurso;
+    private String NCurso;
 
     public CURSO() {
     }

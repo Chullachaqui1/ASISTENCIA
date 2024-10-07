@@ -12,9 +12,9 @@ import java.util.Date;
  */
 public class HISTORIALAUDIC {
     
-    int IdHistorialAl,Registro;
-    String Tipo,Tabla,Campo,ValorAntes,ValorDespues,Usuario;
-    Date Fecha;
+    private int IdHistorialAl,Registro;
+    private String Tipo,Tabla,Campo,ValorAntes,ValorDespues,Usuario;
+    private Date Fecha;
 
     public HISTORIALAUDIC() {
     }

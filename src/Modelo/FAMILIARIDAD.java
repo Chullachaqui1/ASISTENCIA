@@ -10,8 +10,8 @@ package Modelo;
  */
 public class FAMILIARIDAD {
     
-    int IdFamiliaridad;
-    String tipoFamiliaridad;
+    private int IdFamiliaridad;
+    private String tipoFamiliaridad;
 
     public FAMILIARIDAD() {
     }

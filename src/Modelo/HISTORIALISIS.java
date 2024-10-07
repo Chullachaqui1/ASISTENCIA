@@ -12,9 +12,9 @@ import java.util.Date;
  */
 public class HISTORIALISIS {
     
-    int IdHistorialAs,Registro;
-    String Tipo, Tabla, Campo,ValorAntes,ValorDespues,Usuario;
-    Date Fecha;
+    private int IdHistorialAs,Registro;
+    private String Tipo, Tabla, Campo,ValorAntes,ValorDespues,Usuario;
+    private Date Fecha;
 
     public HISTORIALISIS() {
     }

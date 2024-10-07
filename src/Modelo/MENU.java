@@ -9,8 +9,8 @@ package Modelo;
  * @author A16
  */
 public class MENU {
-    int IdMenu;
-    String Nombre;
+    private int IdMenu;
+    private String Nombre;
 
     public MENU() {
     }

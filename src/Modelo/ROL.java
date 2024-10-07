@@ -10,8 +10,8 @@ package Modelo;
  */
 public class ROL {
     
-    int IdRol;
-    String Nombre ;
+    private int IdRol;
+    private String Nombre ;
 
     public ROL() {
     }

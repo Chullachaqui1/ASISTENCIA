@@ -10,11 +10,6 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import Modelo.Usuario;
 
-/**
- *
- * @author A16
- */
-
     
     public class USUARIOSControl {
      private final USUARIOSDAO DATOS;
@@ -34,7 +29,6 @@ import Modelo.Usuario;
         String[] titulos={"IdUsuarios","Nombres","Apellidos","correo","DNI","Clave","IdRol"};
         this.modeloTabla=new DefaultTableModel(null,titulos);        
         
-        String estado;
         String[] registro = new String[7];
         
         this.registrosMostrados=0;
@@ -47,9 +41,7 @@ import Modelo.Usuario;
             registro[4]=Integer.toString(item.getDNI()) ;
 	    registro[5]=item.getClave();
 	    registro[6]=Integer.toString(item.getIdRol());
-            
-            
-            
+
             this.modeloTabla.addRow(registro);
             this.registrosMostrados=this.registrosMostrados+1;
         }

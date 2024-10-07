@@ -10,8 +10,8 @@ package Modelo;
  */
 public class OBSERVACION {
     
-    int IdObservaciones,IdAsistencia;
-    String Observacion;
+    private int IdObservaciones,IdAsistencia;
+    private String Observacion;
 
     public OBSERVACION() {
     }

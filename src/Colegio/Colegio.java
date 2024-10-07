@@ -4,7 +4,7 @@
  */
 package Colegio;
 
-import Vista.FrmPrincipal;
+import Vista.FrmLogin;
 
 /**
  *
@@ -17,8 +17,9 @@ public class Colegio {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        FrmPrincipal objfrm = new FrmPrincipal();
-        objfrm.setVisible(true);
+        FrmLogin pLogin = new FrmLogin();
+        pLogin.setVisible(true);
+        pLogin.setLocationRelativeTo(null);
     }
     
 }

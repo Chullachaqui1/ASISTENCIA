@@ -10,8 +10,8 @@ package Modelo;
  */
 public class TELAPODERADO {
     
-    int DNIALUMNO,IdFamiliaridad,celular,telefono;
-    String nombreApoderado;
+    private int DNIALUMNO,IdFamiliaridad,celular,telefono;
+    private String nombreApoderado;
 
     public TELAPODERADO() {
     }

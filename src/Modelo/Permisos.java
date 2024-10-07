@@ -10,8 +10,8 @@ package Modelo;
  */
 public class Permisos {
     
-   int IdPermiso,IdRol,IdSubMenu;
-   boolean Activo;
+   private int IdPermiso,IdRol,IdSubMenu;
+   private boolean Activo;
 
     public Permisos() {
     }

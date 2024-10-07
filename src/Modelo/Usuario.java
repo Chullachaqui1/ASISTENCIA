@@ -9,13 +9,13 @@ package Modelo;
  * @author A16
  */
 public class Usuario {
-    int IdUsuarios, DNI,IdRol;
-    String Nombres,Apellidos,correo ,Clave;
+    private int IdUsuarios, DNI,IdRol;
+    private String Nombres,Apellidos,correo ,Clave;
 
     public Usuario() {
     }
 
-    public Usuario(int IdUsuarios, int DNI, int IdRol, String Nombres, String Apellidos, String correo, String Clave) {
+    public Usuario(int IdUsuarios, String Nombres, String Apellidos, String correo, int DNI, String Clave, int IdRol) {
         this.IdUsuarios = IdUsuarios;
         this.DNI = DNI;
         this.IdRol = IdRol;

@@ -9,8 +9,8 @@ package Modelo;
  * @author A16
  */
 public class ANTENFERMEDADES {
-   public int  DNIALUMNO;
-    public String Lesion ,EnfFisica,EnfMental,Discapacidad;
+   private int  DNIALUMNO;
+    private String Lesion ,EnfFisica,EnfMental,Discapacidad;
 
     public ANTENFERMEDADES() {
     }

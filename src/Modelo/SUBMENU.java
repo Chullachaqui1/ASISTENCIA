@@ -10,8 +10,8 @@ package Modelo;
  */
 public class SUBMENU {
     
-    int IdSubMenu,IdMenu;
-    String Nombre , NombreFormulario;
+    private int IdSubMenu,IdMenu;
+    private String Nombre , NombreFormulario;
 
     public SUBMENU() {
     }

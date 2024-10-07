@@ -9,8 +9,8 @@ package Modelo;
  * @author A16
  */
 public class AULA {
-    int IdAula,Grado,IdUsuarios;
-    String Seccion;
+    private int IdAula,Grado,IdUsuarios;
+    private String Seccion;
 
     public AULA() {
     }

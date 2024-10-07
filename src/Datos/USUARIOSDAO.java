@@ -35,11 +35,11 @@ public class USUARIOSDAO {
     public List<Usuario> listar1(String texto) {
         List<Usuario> registros=new ArrayList();
         try {
-            ps=CON.conectar().prepareStatement("SELECT * FROM USUARIOS WHERE DNI LIKE ?");
+            ps=CON.conectar().prepareStatement("SELECT * FROM USUARIOS WHERE Nombres LIKE ?");
 	    ps.setString(1,"%" + texto +"%");
             rs=ps.executeQuery();
             while(rs.next()){
-         registros.add(new Usuario(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)));
+         registros.add(new Usuario(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6),rs.getInt(7)));
                 
             }
             ps.close();
@@ -79,6 +79,7 @@ public class USUARIOSDAO {
         }
         return resp;
      }
+         
 	public boolean actualizar(Usuario obj) {
         resp=false;
         try {

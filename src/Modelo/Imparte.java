@@ -10,7 +10,7 @@ package Modelo;
  */
 public class Imparte {
     
-    int IdImparte,IdUsuarios,IdCurso,IdAula;
+    private int IdImparte,IdUsuarios,IdCurso,IdAula;
 
     public Imparte() {
     }

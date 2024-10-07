@@ -10,7 +10,7 @@ package Modelo;
  */
 public class DETALLESASISTENCIA {
     
-    int IdAsistencia,IdImparte,IdUsuarios;
+    private int IdAsistencia,IdImparte,IdUsuarios;
 
     public DETALLESASISTENCIA() {
     }

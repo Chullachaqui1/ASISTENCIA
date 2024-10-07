@@ -12,9 +12,9 @@ import java.util.Date;
  */
 public class ASISTENCIA {
     
-    int IdAsistencia , IdAula,DNIALUMNO,IdObservaciones;
-    Date fecha;
-    String IdTipoAsis;
+    private int IdAsistencia , IdAula,DNIALUMNO,IdObservaciones;
+    private Date fecha;
+    private String IdTipoAsis;
 
     public ASISTENCIA() {
     }

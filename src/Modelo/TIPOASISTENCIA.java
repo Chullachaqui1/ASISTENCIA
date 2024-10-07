@@ -10,7 +10,7 @@ package Modelo;
  */
 public class TIPOASISTENCIA {
  
-   String idTipoAsis,NombreTipo;
+   private String idTipoAsis,NombreTipo;
 
     public TIPOASISTENCIA() {
     }
