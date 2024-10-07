@@ -13,21 +13,17 @@ import Utilitario.ValidarTecla;
 import controlador.USUARIOSControl;
 import java.util.List;
 
-/**
- *
- * @author Antony
- */
 public class FrmRegristarU extends javax.swing.JFrame {
-    private final USUARIOSControl CONTROL;
-    private final ROLControl CONTRROL;
+    //private final USUARIOSControl CONTROL;
+    ROLControl CONTRROL = new ROLControl();
     MenFlo Mensaje = new MenFlo();
     Email EValidar = new Email();
 
-    public FrmRegristarU() {
+    public FrmRegristarU(ROLControl CONTRROL) {
         initComponents();
         JPanelImage mImagen = new JPanelImage(panIcon, "/icons/INSIGNIA.png");
         panIcon.add(mImagen).repaint();
-        
+        this.CONTRROL = CONTRROL;  
     }
 
     @SuppressWarnings("unchecked")
@@ -241,7 +237,11 @@ public class FrmRegristarU extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        List <ROL> listaRoles = this.CONTRROL.listar();
+        List <ROL> listaRoles = CONTRROL.listar();
+        for(ROL rol:listaRoles)
+         {
+             cmbRol.addItem(rol.getNombre());
+         }
     }//GEN-LAST:event_formWindowOpened
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
