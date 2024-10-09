@@ -5,6 +5,7 @@
 package Vista;
 
 import Controlador.AlumnoControl;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -19,12 +20,19 @@ public class PDatos extends javax.swing.JPanel {
     public PDatos() {
         initComponents();
         CONTROL =new AlumnoControl();
+        listar("");
+        
     }
     private void listar(String texto){
         tblDatos.setModel(this.CONTROL.listar(texto));
         TableRowSorter orden= new TableRowSorter(tblDatos.getModel());
         tblDatos.setRowSorter(orden);
-        //lblTotal.setText("Mostrando " + this.CONTROL.totalMostrados() + " de un total de " + "" + " registros");
+    }
+    
+    private void buscar(String texto){
+        tblDatos.setModel(this.CONTROL.buscar(texto));
+        TableRowSorter orden= new TableRowSorter(tblDatos.getModel());
+        tblDatos.setRowSorter(orden);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,8 +45,11 @@ public class PDatos extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(1100, 1500));
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -53,6 +64,8 @@ public class PDatos extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblDatos);
 
+        btnBuscar.setBackground(new java.awt.Color(255, 255, 102));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,43 +73,50 @@ public class PDatos extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Nombre");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 894, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
+                        .addComponent(jLabel1)
+                        .addGap(34, 34, 34)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
                         .addComponent(btnBuscar)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        listar("");
+        buscar(txtBuscar.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblDatos;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
