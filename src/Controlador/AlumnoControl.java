@@ -48,4 +48,27 @@ public class AlumnoControl {
         }
         return this.modeloTabla;
     }
+    
+    public DefaultTableModel buscar(String texto){
+        List<Alumno> lista=new ArrayList();
+        lista.addAll(DATOS.buscar(texto));
+        
+        String[] titulos={"Id","Nombres","Apellidos","Direccion","Referencia"};
+        this.modeloTabla=new DefaultTableModel(null,titulos);        
+ 
+        String[] registro = new String[5];
+        
+        this.registrosMostrados=0;
+        for (Alumno item:lista){
+            
+            registro[0]=Integer.toString(item.getDNIALUMNO());
+            registro[1]=item.getNombres();
+            registro[2]=item.getApellidos();
+            registro[3]=item.getDireccion();
+            registro[4]=item.getRefDirec();
+            this.modeloTabla.addRow(registro);
+            this.registrosMostrados=this.registrosMostrados+1;
+        }
+        return this.modeloTabla;
+    }
 }
