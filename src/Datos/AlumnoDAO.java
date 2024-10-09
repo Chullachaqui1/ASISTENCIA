@@ -49,4 +49,25 @@ public class AlumnoDAO {
         }
         return registros;
     }
+    
+     public List<Alumno> buscar(String texto) {
+        List<Alumno> registros=new ArrayList();
+        try {
+            ps=CON.conectar().prepareStatement("SELECT * FROM ALUMNO WHERE nombres LIKE ?");
+            ps.setString(1,"%" + texto +"%");
+            rs=ps.executeQuery();
+            while(rs.next()){
+                registros.add(new Alumno(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally{
+            ps=null;
+            rs=null;
+            CON.desconectar();
+        }
+        return registros;
+    }
 }
