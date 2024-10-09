@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Utilitario.JPanelImage;
 import java.awt.BorderLayout;
 
 /**
@@ -18,6 +19,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     public FrmPrincipal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+        JPanelImage mImagen = new JPanelImage(panIcon, "/icons/INSIGNIA.png");
+        panIcon.add(mImagen).repaint();
     }
 
     /**
@@ -34,16 +37,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnDatos = new javax.swing.JButton();
         btnAsistencia = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
+        panIcon = new javax.swing.JPanel();
         Pcontenedor = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Pprincipal.setBackground(new java.awt.Color(51, 102, 255));
+        Pprincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenid@");
 
+        btnDatos.setBackground(new java.awt.Color(130, 171, 255));
         btnDatos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnDatos.setText("Datos ");
         btnDatos.addActionListener(new java.awt.event.ActionListener() {
@@ -52,11 +56,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnAsistencia.setBackground(new java.awt.Color(130, 171, 255));
         btnAsistencia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAsistencia.setText("Asistencia");
 
+        btnReportes.setBackground(new java.awt.Color(130, 171, 255));
         btnReportes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnReportes.setText("Reportes");
+
+        javax.swing.GroupLayout panIconLayout = new javax.swing.GroupLayout(panIcon);
+        panIcon.setLayout(panIconLayout);
+        panIconLayout.setHorizontalGroup(
+            panIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 64, Short.MAX_VALUE)
+        );
+        panIconLayout.setVerticalGroup(
+            panIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 71, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout PprincipalLayout = new javax.swing.GroupLayout(Pprincipal);
         Pprincipal.setLayout(PprincipalLayout);
@@ -72,7 +89,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(PprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAsistencia, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                            .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(PprincipalLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(panIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         PprincipalLayout.setVerticalGroup(
@@ -80,20 +100,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(PprincipalLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(55, 55, 55)
-                .addComponent(btnDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
+                .addComponent(btnDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(btnAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(27, 27, 27)
                 .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(panIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout PcontenedorLayout = new javax.swing.GroupLayout(Pcontenedor);
         Pcontenedor.setLayout(PcontenedorLayout);
         PcontenedorLayout.setHorizontalGroup(
             PcontenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 676, Short.MAX_VALUE)
+            .addGap(0, 728, Short.MAX_VALUE)
         );
         PcontenedorLayout.setVerticalGroup(
             PcontenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +144,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosActionPerformed
         // TODO add your handling code here:
         PDatos p1 = new PDatos();
-        p1.setSize(1000, 1400);
+        p1.setSize(1200, 1500);
         p1.setLocation(0, 0);
         Pcontenedor.removeAll();
         Pcontenedor.add(p1,BorderLayout.CENTER);
@@ -142,5 +164,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnDatos;
     private javax.swing.JButton btnReportes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel panIcon;
     // End of variables declaration//GEN-END:variables
 }
