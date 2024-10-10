@@ -5,6 +5,7 @@
 package Colegio;
 
 import Vista.FrmLogin;
+import Vista.FrmPrincipal;
 
 /**
  *
