@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import Modelo.ROL;
+import Datos.RolDAO;
 
 /**
  *
@@ -24,7 +25,7 @@ public class RolDAO {
     public RolDAO(){
         CON=Conexion.getInstancia();
     }
-   
+
     public List<ROL> listar() {
         List<ROL> registros=new ArrayList();
         try {
