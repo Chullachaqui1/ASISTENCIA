@@ -36,5 +36,4 @@ public class ROL {
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
-    
 }
