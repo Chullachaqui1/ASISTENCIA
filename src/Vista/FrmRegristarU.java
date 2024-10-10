@@ -4,18 +4,23 @@
  */
 package Vista;
 
-import Controlador.ROLControl;
 import Modelo.ROL;
+import Modelo.Usuario;
 import Utilitario.Email;
+import Utilitario.Encript;
 import Utilitario.JPanelImage;
 import Utilitario.MenFlo;
 import Utilitario.ValidarTecla;
+import controlador.ROLControl;
 import controlador.USUARIOSControl;
 import java.util.List;
+import javax.swing.JComboBox;
 
 public class FrmRegristarU extends javax.swing.JFrame {
-    //private final USUARIOSControl CONTROL;
-    ROLControl CONTRROL = new ROLControl();
+
+    private final USUARIOSControl CONTROL;
+    private ROLControl rolControl;
+    private Encript mEncript;
     MenFlo Mensaje = new MenFlo();
     Email EValidar = new Email();
 
@@ -23,7 +28,9 @@ public class FrmRegristarU extends javax.swing.JFrame {
         initComponents();
         JPanelImage mImagen = new JPanelImage(panIcon, "/icons/INSIGNIA.png");
         panIcon.add(mImagen).repaint();
-        this.CONTRROL = CONTRROL;  
+        rolControl = new ROLControl();
+        mEncript = new Encript();
+        CONTROL = new USUARIOSControl();
     }
 
     @SuppressWarnings("unchecked")
@@ -105,6 +112,11 @@ public class FrmRegristarU extends javax.swing.JFrame {
         btnCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         cmbRol.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         cmbRol.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, java.awt.Color.black), "Rol", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 1, 14))); // NOI18N
@@ -151,9 +163,9 @@ public class FrmRegristarU extends javax.swing.JFrame {
                                 .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,12 +189,12 @@ public class FrmRegristarU extends javax.swing.JFrame {
                             .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(83, 83, 83)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
 
@@ -200,14 +212,26 @@ public class FrmRegristarU extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void limpiar(){
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtCorreo.setText("");
+        txtContra.setText("");
+        txtConfir.setText("");
+        txtDni.setText("");
+        
+    }
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         if (!txtNombre.getText().trim().equals("") && !txtApellido.getText().trim().equals("")
                 && !txtCorreo.getText().trim().equals("") && !txtDni.getText().trim().equals("")
                 && !txtContra.getText().trim().equals("") && !txtConfir.getText().trim().equals("")) {
-
             if (EValidar.ValidarEmail(txtCorreo.getText().trim())) {
                 if (txtContra.getText().trim().equals(txtConfir.getText().trim())) {
+                    this.CONTROL.insertar(new Usuario(txtNombre.getText().trim(),txtApellido.getText().trim(),txtCorreo.getText().trim(),Integer.parseInt(txtDni.getText().trim()),mEncript.ecnode(txtContra.getText().trim()),(cmbRol.getSelectedIndex())+1));
+                    
+                    limpiar();
+                    
                 } else {
                     Mensaje.mostrarMensaje("Las contraseñas no coinciden", "Error", "Llenado fallido");
                 }
@@ -236,13 +260,17 @@ public class FrmRegristarU extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidoKeyTyped
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        List <ROL> listaRoles = CONTRROL.listar();
-        for(ROL rol:listaRoles)
-         {
-             cmbRol.addItem(rol.getNombre());
-         }
+        List<ROL> listaRoles = rolControl.listar();
+        if(listaRoles!=null){
+            for (ROL rol:listaRoles){
+                cmbRol.addItem(rol.getNombre());
+            }
+        }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
