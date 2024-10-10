@@ -1,6 +1,7 @@
 package Utilitario;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -13,19 +14,51 @@ import org.apache.commons.codec.binary.Base64;
  * @author
  */
 public class Encript {
+    String secretKey = "Chull@ch@quiY@kurun@";
 
-    public static void Encript(String[] args) {
-        String secretKey = "Chull@ch@kiY@kurun@";
-        Encript objEncript = new Encript();
-        String cadenaAEncriptar = JOptionPane.showInputDialog("Ingresa la cadena a encriptar");
-        String cadenaEncriptada = objEncript.ecnode(secretKey, cadenaAEncriptar);
-        JOptionPane.showMessageDialog(null, "Cadena encriptada: " + cadenaEncriptada);
-        String cadenaDesencriptada = objEncript.deecnode(secretKey, cadenaEncriptada);
-        JOptionPane.showMessageDialog(null, "Cadena desencriptada: " + cadenaDesencriptada);
-
+    // Método modificado para retornar un array de bytes
+    public byte[] ecnode(String cadena) {
+        byte[] encriptacion = null;
+        try {
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            byte[] llavePassword = md5.digest(secretKey.getBytes("utf-8"));
+            byte[] BytesKey = Arrays.copyOf(llavePassword, 24);
+            SecretKey key = new SecretKeySpec(BytesKey, "DESede");
+            Cipher cifrado = Cipher.getInstance("DESede");
+            cifrado.init(Cipher.ENCRYPT_MODE, key);
+            byte[] plainTextBytes = cadena.getBytes("utf-8");
+            byte[] buf = cifrado.doFinal(plainTextBytes);
+            encriptacion = Base64.encodeBase64(buf); // Mantengo el base64 para mantener la estructura
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al Encriptar");
+        }
+        return encriptacion;
     }
 
-    public String ecnode(String secretKey, String cadena) {
+    // Método modificado para recibir un String y un array de bytes
+    public String deecnode(byte[] cadenaEncriptada) {
+        String desencriptacion = "";
+        try {
+            byte[] message = Base64.decodeBase64(cadenaEncriptada);
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            byte[] digestOfPassword = md5.digest(secretKey.getBytes("utf-8"));
+            byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
+            SecretKey key = new SecretKeySpec(keyBytes, "DESede");
+            Cipher decipher = Cipher.getInstance("DESede");
+            decipher.init(Cipher.DECRYPT_MODE, key);
+            byte[] plainText = decipher.doFinal(message);
+            desencriptacion = new String(plainText, "UTF-8");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Algo salió mal");
+        }
+        return desencriptacion;
+    }
+}
+/*public class Encript {
+    String secretKey ="Chull@ch@quiY@kurun@";
+    
+    
+    public String ecnode(String cadena) {
         String encriptacion = "";
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
@@ -39,7 +72,7 @@ public class Encript {
             byte[] base64Bytes = Base64.encodeBase64(buf);
             encriptacion = new String(base64Bytes);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Algo salió mal");
+            JOptionPane.showMessageDialog(null, "Error al Encriptar");
         }
         return encriptacion;
     }
@@ -62,4 +95,4 @@ public class Encript {
         }
         return desencriptacion;
     }
-}
+}*/
