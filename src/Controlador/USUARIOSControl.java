@@ -9,17 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import Modelo.Usuario;
+import Utilitario.Encript;
 
     
     public class USUARIOSControl {
-     private final USUARIOSDAO DATOS;
+    private final USUARIOSDAO DATOS;
     private Usuario obj;
+    private Encript mEncript;
     private DefaultTableModel modeloTabla;
     public int registrosMostrados;
 
     public USUARIOSControl(){
         this.DATOS=new USUARIOSDAO();
         this.obj=new Usuario();
+        mEncript = new Encript();
         this.registrosMostrados=0;
     }
     public DefaultTableModel listar1(String texto){
@@ -39,7 +42,7 @@ import Modelo.Usuario;
             registro[2]=item.getApellidos();
             registro[3]=item.getCorreo();
             registro[4]=Integer.toString(item.getDNI()) ;
-	    registro[5]=item.getClave();
+	    registro[5]=mEncript.deecnode( item.getClave());
 	    registro[6]=Integer.toString(item.getIdRol());
 
             this.modeloTabla.addRow(registro);
@@ -47,4 +50,15 @@ import Modelo.Usuario;
         }
         return this.modeloTabla;
     }
+    
+    public Usuario login (String texto){
+        return DATOS.login(texto);
+    }
+    
+    public boolean insertar(Usuario obj)
+   {
+       DATOS.insertar(obj);
+
+    return true;
+   }
 }
