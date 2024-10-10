@@ -9,13 +9,30 @@ package Modelo;
  * @author A16
  */
 public class Usuario {
-    private int IdUsuarios, DNI,IdRol;
-    private String Nombres,Apellidos,correo ,Clave;
+    private int IdUsuarios, DNI, IdRol;
+    private String Nombres, Apellidos, correo;
+    private byte[] Clave;
 
     public Usuario() {
     }
 
-    public Usuario(int IdUsuarios, String Nombres, String Apellidos, String correo, int DNI, String Clave, int IdRol) {
+    public Usuario(String correo, byte[] Clave,int IdRol) {
+        this.IdRol = IdRol;
+        this.correo = correo;
+        this.Clave = Clave;
+    }
+
+    public Usuario(String Nombres, String Apellidos, String correo, int DNI, byte[] Clave, int IdRol) {
+        this.DNI = DNI;
+        this.IdRol = IdRol;
+        this.Nombres = Nombres;
+        this.Apellidos = Apellidos;
+        this.correo = correo;
+        this.Clave = Clave;
+    }
+
+    
+    public Usuario(int IdUsuarios, String Nombres, String Apellidos, String correo, int DNI, byte[] Clave, int IdRol) {
         this.IdUsuarios = IdUsuarios;
         this.DNI = DNI;
         this.IdRol = IdRol;
@@ -73,13 +90,11 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getClave() {
+    public byte[] getClave() {  // Cambio aquí
         return Clave;
     }
 
-    public void setClave(String Clave) {
+    public void setClave(byte[] Clave) {  // Cambio aquí
         this.Clave = Clave;
     }
-    
-    
 }
