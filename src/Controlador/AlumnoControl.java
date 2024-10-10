@@ -60,7 +60,7 @@ public class AlumnoControl {
         
         this.registrosMostrados=0;
         for (Alumno item:lista){
-            
+
             registro[0]=Integer.toString(item.getDNIALUMNO());
             registro[1]=item.getNombres();
             registro[2]=item.getApellidos();
