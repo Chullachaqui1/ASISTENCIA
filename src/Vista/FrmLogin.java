@@ -4,16 +4,26 @@
  */
 package Vista;
 
+import Datos.USUARIOSDAO;
+import Modelo.Usuario;
 import Utilitario.JPanelImage;
+import Utilitario.MenFlo;
+import Utilitario.Encript;
+import controlador.USUARIOSControl;
 
 public class FrmLogin extends javax.swing.JFrame {
 
+    private final USUARIOSControl CONTROL;
+    MenFlo Mensaje = new MenFlo();
+    private Encript mEncript;
+
     public FrmLogin() {
         initComponents();
-        JPanelImage mImagen = new JPanelImage(panIcon,"/icons/INSIGNIA.png");
+        JPanelImage mImagen = new JPanelImage(panIcon, "/icons/INSIGNIA.png");
         panIcon.add(mImagen).repaint();
+        mEncript = new Encript();
+        CONTROL = new USUARIOSControl();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -57,7 +67,7 @@ public class FrmLogin extends javax.swing.JFrame {
         txtContra.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         btnInicio.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        btnInicio.setText("Iniciar Seción");
+        btnInicio.setText("Iniciar Sesión");
         btnInicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -135,10 +145,39 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         // TODO add your handling code here:
-        FrmRegristarU pRegis = new FrmRegristarU();
-        pRegis.setVisible(true);
-        pRegis.setLocationRelativeTo(null);
-        this.dispose();
+
+        Usuario mUsuario = this.CONTROL.login(txtUsua.getText().trim());
+
+        if (mUsuario != null && !txtUsua.getText().trim().equals("") && !txtContra.getText().trim().equals("")) {
+
+            String contraseñaDesencriptada = mEncript.deecnode(mUsuario.getClave());
+
+            // Verificamos si la contraseña ingresada coincide con la desencriptada
+            if (txtContra.getText().trim().equals(contraseñaDesencriptada)) {
+
+                // Verificamos el rol del usuario
+                if (mUsuario.getIdRol() == 1) {
+                    FrmRegristarU pRegis = new FrmRegristarU(null);
+                    pRegis.setVisible(true);
+                    pRegis.setLocationRelativeTo(null);
+                    this.dispose();  // Cerramos la ventana de login
+
+                } else if (mUsuario.getIdRol() == 2) {
+                    Mensaje.mostrarMensaje("Bienvenido Docente", "Info", "Login");
+                    FrmPrincipal pRegis = new FrmPrincipal();
+                    pRegis.setVisible(true);
+                    pRegis.setLocationRelativeTo(null);
+                    this.dispose();
+
+                } else {
+                    Mensaje.mostrarMensaje("Bienvenido Auxiliar", "Info", "Login");
+                }
+            } else {
+                Mensaje.mostrarMensaje("Contraseña incorrecta", "Error", "Login");
+            }
+        } else {
+            Mensaje.mostrarMensaje("Ingrese el usuario y la contraseña", "Error", "Login");
+        }
     }//GEN-LAST:event_btnInicioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
