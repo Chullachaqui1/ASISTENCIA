@@ -16,8 +16,8 @@ public class Conexion {
     private final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
       private final String URL = "jdbc:sqlserver://localhost:1433;databaseName=ASISTENCIARPB1;encrypt=false;trustServerCertificate=true";
 
-    private final String USER = "Vega";
-    private final String PASSWORD = "RosalesVega";
+    private final String USER = "valery";
+    private final String PASSWORD = "valery";
     
     public Connection cadena;
     public static Conexion instancia;
