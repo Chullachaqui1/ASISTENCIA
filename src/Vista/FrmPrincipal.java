@@ -38,6 +38,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnAsistencia = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
         panIcon = new javax.swing.JPanel();
+        lblRol = new javax.swing.JLabel();
         Pcontenedor = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,6 +76,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGap(0, 71, Short.MAX_VALUE)
         );
 
+        lblRol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblRol.setText("Usuario");
+
         javax.swing.GroupLayout PprincipalLayout = new javax.swing.GroupLayout(Pprincipal);
         Pprincipal.setLayout(PprincipalLayout);
         PprincipalLayout.setHorizontalGroup(
@@ -92,7 +96,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(PprincipalLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addComponent(panIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PprincipalLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(lblRol)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         PprincipalLayout.setVerticalGroup(
@@ -100,13 +107,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(PprincipalLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblRol)
+                .addGap(39, 39, 39)
                 .addComponent(btnDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(btnAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(panIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
@@ -115,7 +124,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         Pcontenedor.setLayout(PcontenedorLayout);
         PcontenedorLayout.setHorizontalGroup(
             PcontenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 728, Short.MAX_VALUE)
+            .addGap(0, 729, Short.MAX_VALUE)
         );
         PcontenedorLayout.setVerticalGroup(
             PcontenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,8 +143,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Pprincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Pcontenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Pprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,7 +154,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosActionPerformed
         // TODO add your handling code here:
-        PDatos p1 = new PDatos();
+        PGradoySeccion p1 = new PGradoySeccion();
         p1.setSize(1200, 1500);
         p1.setLocation(0, 0);
         Pcontenedor.removeAll();
@@ -164,6 +175,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnDatos;
     private javax.swing.JButton btnReportes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblRol;
     private javax.swing.JPanel panIcon;
     // End of variables declaration//GEN-END:variables
 }
