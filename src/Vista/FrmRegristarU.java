@@ -14,7 +14,7 @@ import Utilitario.ValidarTecla;
 import controlador.ROLControl;
 import controlador.USUARIOSControl;
 import java.util.List;
-import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class FrmRegristarU extends javax.swing.JFrame {
 
@@ -263,15 +263,16 @@ public class FrmRegristarU extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         List<ROL> listaRoles = rolControl.listar();
-        if(listaRoles!=null){
-            for (ROL rol:listaRoles){
-                cmbRol.addItem(rol.getNombre());
+        if (listaRoles != null) {
+            for (ROL rol : listaRoles) {
+                //cmbRol.addItem(rol.getNombre());
+               cmbRol.addItem(new ROL(rol.getIdRol(),rol.getNombre()));
             }
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        limpiar();
+        
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
