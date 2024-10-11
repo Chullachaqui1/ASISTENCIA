@@ -37,18 +37,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnDatos = new javax.swing.JButton();
         btnAsistencia = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
-        panIcon = new javax.swing.JPanel();
         lblRol = new javax.swing.JLabel();
+        panIcon = new javax.swing.JPanel();
         Pcontenedor = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Pprincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Pprincipal.setPreferredSize(new java.awt.Dimension(174, 489));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Bienvenid@");
 
-        btnDatos.setBackground(new java.awt.Color(130, 171, 255));
+        btnDatos.setBackground(new java.awt.Color(144, 180, 253));
         btnDatos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnDatos.setText("Datos ");
         btnDatos.addActionListener(new java.awt.event.ActionListener() {
@@ -57,13 +58,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnAsistencia.setBackground(new java.awt.Color(130, 171, 255));
+        btnAsistencia.setBackground(new java.awt.Color(144, 180, 253));
         btnAsistencia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAsistencia.setText("Asistencia");
 
-        btnReportes.setBackground(new java.awt.Color(130, 171, 255));
+        btnReportes.setBackground(new java.awt.Color(144, 180, 253));
         btnReportes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnReportes.setText("Reportes");
+
+        lblRol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblRol.setText("Usuario");
 
         javax.swing.GroupLayout panIconLayout = new javax.swing.GroupLayout(panIcon);
         panIcon.setLayout(panIconLayout);
@@ -75,9 +79,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             panIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 71, Short.MAX_VALUE)
         );
-
-        lblRol.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblRol.setText("Usuario");
 
         javax.swing.GroupLayout PprincipalLayout = new javax.swing.GroupLayout(Pprincipal);
         Pprincipal.setLayout(PprincipalLayout);
@@ -95,11 +96,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(btnAsistencia, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                             .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(PprincipalLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(panIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PprincipalLayout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addComponent(lblRol)))
+                        .addComponent(lblRol))
+                    .addGroup(PprincipalLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(panIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         PprincipalLayout.setVerticalGroup(
@@ -109,26 +110,29 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblRol)
-                .addGap(39, 39, 39)
-                .addComponent(btnDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addGap(25, 25, 25))
         );
+
+        Pcontenedor.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Pcontenedor.setPreferredSize(new java.awt.Dimension(728, 0));
 
         javax.swing.GroupLayout PcontenedorLayout = new javax.swing.GroupLayout(Pcontenedor);
         Pcontenedor.setLayout(PcontenedorLayout);
         PcontenedorLayout.setHorizontalGroup(
             PcontenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 729, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
         PcontenedorLayout.setVerticalGroup(
             PcontenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 496, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,10 +147,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Pcontenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Pprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Pcontenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(Pprincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
