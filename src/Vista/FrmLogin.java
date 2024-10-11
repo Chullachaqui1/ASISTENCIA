@@ -24,7 +24,6 @@ public class FrmLogin extends javax.swing.JFrame {
         mEncript = new Encript();
         CONTROL = new USUARIOSControl();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -67,7 +66,7 @@ public class FrmLogin extends javax.swing.JFrame {
         txtContra.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         btnInicio.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        btnInicio.setText("Iniciar Sesión");
+        btnInicio.setText("Iniciar Seción");
         btnInicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +143,6 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        // TODO add your handling code here:
 
         Usuario mUsuario = this.CONTROL.login(txtUsua.getText().trim());
 
