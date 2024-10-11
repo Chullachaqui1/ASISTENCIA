@@ -228,10 +228,12 @@ public class FrmRegristarU extends javax.swing.JFrame {
                 && !txtContra.getText().trim().equals("") && !txtConfir.getText().trim().equals("")) {
             if (EValidar.ValidarEmail(txtCorreo.getText().trim())) {
                 if (txtContra.getText().trim().equals(txtConfir.getText().trim())) {
-                    this.CONTROL.insertar(new Usuario(txtNombre.getText().trim(),txtApellido.getText().trim(),txtCorreo.getText().trim(),Integer.parseInt(txtDni.getText().trim()),mEncript.ecnode(txtContra.getText().trim()),(cmbRol.getSelectedIndex())+1));
-                    
-                    limpiar();
-                    
+                    ROL selectedItem = (ROL) cmbRol.getSelectedItem();
+                    if (selectedItem != null) {
+                        int X = selectedItem.getIdRol();
+                        this.CONTROL.insertar(new Usuario(txtNombre.getText().trim(), txtApellido.getText().trim(), txtCorreo.getText().trim(), Integer.parseInt(txtDni.getText().trim()), mEncript.ecnode(txtContra.getText().trim()), X));
+                        limpiar();
+                    }
                 } else {
                     Mensaje.mostrarMensaje("Las contraseñas no coinciden", "Error", "Llenado fallido");
                 }
