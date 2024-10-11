@@ -152,25 +152,31 @@ public class FrmLogin extends javax.swing.JFrame {
 
             String contraseñaDesencriptada = mEncript.deecnode(mUsuario.getClave());
 
-            // Verificamos si la contraseña ingresada coincide con la desencriptada
             if (txtContra.getText().trim().equals(contraseñaDesencriptada)) {
 
-                // Verificamos el rol del usuario
-                if (mUsuario.getIdRol() == 1) {
-                    FrmRegristarU pRegis = new FrmRegristarU(null);
-                    pRegis.setVisible(true);
-                    pRegis.setLocationRelativeTo(null);
-                    this.dispose();  // Cerramos la ventana de login
-
-                } else if (mUsuario.getIdRol() == 2) {
-                    Mensaje.mostrarMensaje("Bienvenido Docente", "Info", "Login");
-                    FrmPrincipal pRegis = new FrmPrincipal();
-                    pRegis.setVisible(true);
-                    pRegis.setLocationRelativeTo(null);
-                    this.dispose();
-
-                } else {
-                    Mensaje.mostrarMensaje("Bienvenido Auxiliar", "Info", "Login");
+                switch (mUsuario.getIdRol()) {
+                    case 1:
+                        {
+                            FrmRegristarU pRegis = new FrmRegristarU(null);
+                            pRegis.setVisible(true);
+                            pRegis.setLocationRelativeTo(null);
+                            this.dispose();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Mensaje.mostrarMensaje("Bienvenido Docente", "Info", "Login");
+                            FrmPrincipal pRegis = new FrmPrincipal();
+                            pRegis.setVisible(true);
+                            pRegis.setLocationRelativeTo(null);
+                            this.dispose();
+                            break;
+                        }
+                    case 3:
+                    {
+                        Mensaje.mostrarMensaje("Bienvenido auxiliar", "Info", "Login");
+                        break;
+                    }
                 }
             } else {
                 Mensaje.mostrarMensaje("Contraseña incorrecta", "Error", "Login");
